@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thumbnail Generator - CreatorHub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/thumbnail-generator.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="container flex-between">
+      <a href="../index.html" class="logo">CreatorHub</a>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="content-planner.html">Content Planner</a></li>
+        <li><a href="script-generator.html">Script Generator</a></li>
+      </ul>
+      <div class="flex" style="gap: 1rem;">
+        <button id="logoutBtn" class="btn btn-primary">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Thumbnail Generator -->
+  <main class="container generator-container">
+    <div class="generator-header">
+      <h1>🎨 Thumbnail Generator</h1>
+      <p>Create stunning, AI-powered thumbnails that boost your CTR</p>
+    </div>
+
+    <div class="generator-content">
+      <!-- Input Section -->
+      <section class="input-section">
+        <h2>Design Your Thumbnail</h2>
+        <form id="thumbnailForm">
+          <div class="form-group">
+            <label>Thumbnail Prompt / Description</label>
+            <textarea id="prompt" placeholder="e.g., 'Shocked YouTuber with red arrow pointing to phone, vibrant colors'" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Platform</label>
+            <select id="platform">
+              <option value="youtube">YouTube (1280×720)</option>
+              <option value="twitch">Twitch (1920×1080)</option>
+              <option value="instagram">Instagram (1080×1080)</option>
+              <option value="custom">Custom Size</option>
+            </select>
+          </div>
+
+          <div id="customSizeGroup" class="form-row" style="display: none;">
+            <div class="form-group">
+              <label>Width (px)</label>
+              <input type="number" id="customWidth" value="1280" min="100">
+            </div>
+            <div class="form-group">
+              <label>Height (px)</label>
+              <input type="number" id="customHeight" value="720" min="100">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Style</label>
+            <select id="style">
+              <option value="bold">Bold & Eye-Catching</option>
+              <option value="minimal">Minimal & Clean</option>
+              <option value="viral">Viral & Trending</option>
+              <option value="professional">Professional</option>
+              <option value="artistic">Artistic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Color Palette</label>
+            <select id="colorPalette">
+              <option value="vibrant">Vibrant (Reds, Yellows, Blues)</option>
+              <option value="pastel">Pastel (Soft Colors)</option>
+              <option value="dark">Dark & Moody</option>
+              <option value="neon">Neon & Bright</option>
+              <option value="monochrome">Monochrome</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Include Text</label>
+            <input type="text" id="textOverlay" placeholder="e.g., 'SHOCKING TRUTH'">
+          </div>
+
+          <div class="form-group">
+            <label>Include Elements</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="includeEmojis" checked>
+                Emojis
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="includeArrows" checked>
+                Arrows / Highlights
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="includeFace">
+                Face / Character
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Generate Thumbnail</button>
+        </form>
+      </section>
+
+      <!-- Preview Section -->
+      <section class="preview-section">
+        <div class="preview-header">
+          <h2>Preview</h2>
+          <div class="preview-actions">
+            <button id="downloadBtn" class="btn btn-secondary" style="display: none;">⬇️ Download</button>
+            <button id="regenerateBtn" class="btn btn-secondary" style="display: none;">🔄 Regenerate</button>
+          </div>
+        </div>
+
+        <div id="thumbnailPreview" class="thumbnail-preview hidden">
+          <img id="thumbnailImage" src="" alt="Generated Thumbnail">
+        </div>
+
+        <div id="loadingSpinner" class="loading hidden">
+          <div class="spinner"></div>
+          <p>Generating your thumbnail with AI...</p>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <p>👈 Fill in the form and click "Generate Thumbnail"</p>
+        </div>
+
+        <div class="preview-dimensions">
+          <span id="dimensionText" class="dimension-text">YouTube (1280×720)</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+      <h2>📋 Thumbnail Tips for Higher CTR</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3>🎯 Use Contrast</h3>
+          <p>Bright, contrasting colors make your thumbnail stand out in search results.</p>
+        </div>
+        <div class="tip-card">
+          <h3>😮 Emotional Expression</h3>
+          <p>Genuine emotions (surprise, excitement) drive more clicks than neutral faces.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🔴 Red Accents</h3>
+          <p>Red borders, text, or highlights grab attention and increase engagement.</p>
+        </div>
+        <div class="tip-card">
+          <h3>📝 Clear Text</h3>
+          <p>Use short, punchy text that's readable even in a small 130x73px preview.</p>
+        </div>
+        <div class="tip-card">
+          <h3>✋ Pointing & Arrows</h3>
+          <p>Arrows, hands, or other pointers guide viewer attention to key elements.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🎬 Consistency</h3>
+          <p>Maintain a consistent style across your thumbnails for brand recognition.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history-section">
+      <h2>Generated Thumbnails</h2>
+      <div id="historyList" class="history-list">
+        <!-- Generated by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/thumbnail-generator.js"></script>
+</body>
+</html>

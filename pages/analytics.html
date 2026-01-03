@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - CreatorHub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/analytics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="container flex-between">
+      <a href="../index.html" class="logo">CreatorHub</a>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="content-planner.html">Content Planner</a></li>
+        <li><a href="script-generator.html">Script Generator</a></li>
+      </ul>
+      <div class="flex" style="gap: 1rem;">
+        <button id="logoutBtn" class="btn btn-primary">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Analytics Content -->
+  <main class="container analytics-container">
+    <div class="analytics-header">
+      <h1>Social Media Analytics</h1>
+      <div class="filter-group">
+        <select id="platformFilter">
+          <option value="">All Platforms</option>
+          <option value="instagram">Instagram</option>
+          <option value="youtube">YouTube</option>
+          <option value="twitter">Twitter/X</option>
+          <option value="facebook">Facebook</option>
+        </select>
+        <select id="contentTypeFilter">
+          <option value="">All Content Types</option>
+          <option value="post">Post</option>
+          <option value="reel">Reel</option>
+          <option value="video">Video</option>
+          <option value="story">Story</option>
+        </select>
+        <input type="date" id="startDate" placeholder="Start Date">
+        <input type="date" id="endDate" placeholder="End Date">
+      </div>
+    </div>
+
+    <!-- Metrics Overview -->
+    <section class="metrics-overview">
+      <div class="metric-card">
+        <h3>Total Reach</h3>
+        <p class="metric-large">48.2M</p>
+        <p class="metric-change">+12% vs last period</p>
+      </div>
+      <div class="metric-card">
+        <h3>Total Impressions</h3>
+        <p class="metric-large">125.8M</p>
+        <p class="metric-change">+8% vs last period</p>
+      </div>
+      <div class="metric-card">
+        <h3>Total Engagement</h3>
+        <p class="metric-large">2.1M</p>
+        <p class="metric-change">+15% vs last period</p>
+      </div>
+      <div class="metric-card">
+        <h3>Avg. Engagement Rate</h3>
+        <p class="metric-large">8.5%</p>
+        <p class="metric-change">+2.1% vs last period</p>
+      </div>
+    </section>
+
+    <!-- Detailed Analytics -->
+    <section class="detailed-analytics">
+      <div class="chart-container">
+        <h2>Reach & Impressions</h2>
+        <canvas id="reachChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h2>Engagement Breakdown</h2>
+        <canvas id="engagementBreakdownChart"></canvas>
+      </div>
+
+      <div class="chart-container full-width">
+        <h2>Platform Comparison</h2>
+        <canvas id="platformComparisonChart"></canvas>
+      </div>
+
+      <div class="chart-container full-width">
+        <h2>Post Performance</h2>
+        <div class="table-container">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Post Title</th>
+                <th>Date</th>
+                <th>Platform</th>
+                <th>Reach</th>
+                <th>Likes</th>
+                <th>Comments</th>
+                <th>Shares</th>
+                <th>Engagement Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Summer Vibes 🌞</td>
+                <td>Dec 28, 2024</td>
+                <td>Instagram</td>
+                <td>125K</td>
+                <td>8.5K</td>
+                <td>420</td>
+                <td>1.2K</td>
+                <td>7.8%</td>
+              </tr>
+              <tr>
+                <td>Behind the Scenes</td>
+                <td>Dec 27, 2024</td>
+                <td>YouTube</td>
+                <td>850K</td>
+                <td>45K</td>
+                <td>3.2K</td>
+                <td>12K</td>
+                <td>6.2%</td>
+              </tr>
+              <tr>
+                <td>Daily Motivation</td>
+                <td>Dec 26, 2024</td>
+                <td>Twitter</td>
+                <td>25K</td>
+                <td>2.1K</td>
+                <td>580</td>
+                <td>340</td>
+                <td>11.2%</td>
+              </tr>
+              <tr>
+                <td>New Product Launch</td>
+                <td>Dec 25, 2024</td>
+                <td>Facebook</td>
+                <td>45K</td>
+                <td>1.8K</td>
+                <td>220</td>
+                <td>150</td>
+                <td>4.5%</td>
+              </tr>
+              <tr>
+                <td>Q&A Session</td>
+                <td>Dec 24, 2024</td>
+                <td>Instagram</td>
+                <td>200K</td>
+                <td>15K</td>
+                <td>2.1K</td>
+                <td>3.5K</td>
+                <td>10.1%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/analytics.js"></script>
+</body>
+</html>

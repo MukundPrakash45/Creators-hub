@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Script Generator - CreatorHub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/script-generator.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="container flex-between">
+      <a href="../index.html" class="logo">CreatorHub</a>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="content-planner.html">Content Planner</a></li>
+        <li><a href="script-generator.html">Script Generator</a></li>
+      </ul>
+      <div class="flex" style="gap: 1rem;">
+        <button id="logoutBtn" class="btn btn-primary">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Script Generator -->
+  <main class="container generator-container">
+    <div class="generator-header">
+      <h1>✍️ AI Script Generator</h1>
+      <p>Generate engaging scripts for any platform with AI-powered content creation</p>
+    </div>
+
+    <div class="generator-content">
+      <!-- Input Form -->
+      <section class="input-section">
+        <h2>Create Your Script</h2>
+        <form id="scriptForm">
+          <div class="form-group">
+            <label>Platform</label>
+            <select id="platform" required>
+              <option value="youtube">YouTube Video</option>
+              <option value="instagram">Instagram Reel</option>
+              <option value="tiktok">TikTok Short</option>
+              <option value="twitter">Twitter/X Thread</option>
+              <option value="facebook">Facebook Post</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Topic / Hook Idea</label>
+            <textarea id="topic" placeholder="e.g., How to build a personal brand as a developer" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Duration (seconds)</label>
+              <input type="number" id="duration" value="60" min="15" max="3600">
+            </div>
+            <div class="form-group">
+              <label>Tone</label>
+              <select id="tone">
+                <option value="funny">Funny & Entertainment</option>
+                <option value="motivational">Motivational</option>
+                <option value="educational">Educational</option>
+                <option value="serious">Serious & Professional</option>
+                <option value="casual">Casual & Relatable</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Language</label>
+            <select id="language">
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+              <option value="french">French</option>
+              <option value="german">German</option>
+              <option value="hindi">Hindi</option>
+              <option value="chinese">Chinese</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Target Audience</label>
+            <input type="text" id="audience" placeholder="e.g., Young professionals, Students, Tech enthusiasts">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Generate Script</button>
+        </form>
+      </section>
+
+      <!-- Output Section -->
+      <section class="output-section">
+        <div class="output-header">
+          <h2>Generated Script</h2>
+          <div class="output-actions">
+            <button id="copyBtn" class="btn btn-secondary" style="display: none;">📋 Copy</button>
+            <button id="downloadBtn" class="btn btn-secondary" style="display: none;">⬇️ Download</button>
+            <button id="regenerateBtn" class="btn btn-secondary" style="display: none;">🔄 Regenerate</button>
+          </div>
+        </div>
+
+        <div id="scriptOutput" class="script-output hidden">
+          <div class="script-section">
+            <h3>🎯 Hook (First 3 seconds)</h3>
+            <p id="hookOutput" class="script-text"></p>
+          </div>
+
+          <div class="script-section">
+            <h3>📝 Main Content</h3>
+            <p id="mainOutput" class="script-text"></p>
+          </div>
+
+          <div class="script-section">
+            <h3>🎬 CTA (Call to Action)</h3>
+            <p id="ctaOutput" class="script-text"></p>
+          </div>
+
+          <div class="script-section">
+            <h3>💡 Tips</h3>
+            <p id="tipsOutput" class="script-text"></p>
+          </div>
+        </div>
+
+        <div id="loadingSpinner" class="loading hidden">
+          <div class="spinner"></div>
+          <p>Generating your script with AI...</p>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <p>👈 Fill in the form and click "Generate Script" to get started</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- History Section -->
+    <section class="history-section">
+      <h2>Recent Scripts</h2>
+      <div id="historyList" class="history-list">
+        <!-- Generated by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/script-generator.js"></script>
+</body>
+</html>

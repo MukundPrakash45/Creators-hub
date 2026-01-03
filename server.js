@@ -12,9 +12,7 @@ app.use(express.json());
 app.use(express.static('.'));
 
 // Initialize Gemini API
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY
-});
+const ai = new GoogleGenAI({});
 
 // Generate Script Route
 app.post('/api/generate-script', async (req, res) => {
@@ -37,10 +35,19 @@ app.post('/api/generate-script', async (req, res) => {
 
     const text = response.text;
 
+    // Remove markdown code blocks if present
+    let cleanedText = text;
+    if (text.includes('```json')) {
+      cleanedText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '');
+    } else if (text.includes('```')) {
+      cleanedText = text.replace(/```\n?/g, '');
+    }
+    cleanedText = cleanedText.trim();
+
     // Try to parse as JSON, fallback to plain text
     let scriptData;
     try {
-      scriptData = JSON.parse(text);
+      scriptData = JSON.parse(cleanedText);
     } catch {
       // If JSON parsing fails, extract text from the response
       scriptData = { 

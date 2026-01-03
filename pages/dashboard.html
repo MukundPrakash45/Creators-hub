@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - CreatorHub</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="container flex-between">
+      <a href="../index.html" class="logo">CreatorHub</a>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="content-planner.html">Content Planner</a></li>
+        <li><a href="script-generator.html">Script Generator</a></li>
+      </ul>
+      <div class="flex" style="gap: 1rem;">
+        <button id="logoutBtn" class="btn btn-primary">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Dashboard Content -->
+  <main class="container dashboard-container">
+    <div class="dashboard-header">
+      <h1>Welcome, Creator!</h1>
+      <p>Here's your performance overview</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-content">
+          <h3>Total Followers</h3>
+          <p class="stat-value">2.5M</p>
+          <p class="stat-change">+125K this month</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">👁️</div>
+        <div class="stat-content">
+          <h3>Total Reach</h3>
+          <p class="stat-value">48.2M</p>
+          <p class="stat-change">+15% vs last month</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">💬</div>
+        <div class="stat-content">
+          <h3>Engagement Rate</h3>
+          <p class="stat-value">8.5%</p>
+          <p class="stat-change">+2.1% vs last month</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-content">
+          <h3>Best Post</h3>
+          <p class="stat-value">125K Likes</p>
+          <p class="stat-change">Posted 5 days ago</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+      <div class="chart-container">
+        <h2>Followers Growth (30 Days)</h2>
+        <canvas id="growthChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h2>Engagement by Platform</h2>
+        <canvas id="platformChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h2>Top Content Types</h2>
+        <canvas id="contentTypeChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h2>Engagement Trends</h2>
+        <canvas id="engagementChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="actions-grid">
+        <a href="content-planner.html" class="action-card">
+          <span class="action-icon">📅</span>
+          <span class="action-text">Plan Content</span>
+        </a>
+        <a href="script-generator.html" class="action-card">
+          <span class="action-icon">✍️</span>
+          <span class="action-text">Generate Script</span>
+        </a>
+        <a href="thumbnail-generator.html" class="action-card">
+          <span class="action-icon">🎨</span>
+          <span class="action-text">Create Thumbnail</span>
+        </a>
+        <a href="ideas-generator.html" class="action-card">
+          <span class="action-icon">💡</span>
+          <span class="action-text">Get Ideas</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
